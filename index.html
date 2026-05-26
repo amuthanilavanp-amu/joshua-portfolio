@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amuthanilavan. P | AI & Data Science Portfolio</title>
+    <meta name="description" content="Futuristic AI & Data Science Portfolio of Amuthanilavan. P - B.Tech Artificial Intelligence & Data Science. Explore projects, future plans, skills, and systems.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Orbitron:wght@400;600;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="cyber-theme">
+    <!-- Web Audio API Synth Sound Toggles & Interactive Cursor Glow -->
+    <div id="glow-pointer"></div>
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Header Navigation -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="#hero" class="logo" id="nav-logo">
+                <span class="logo-accent">A</span>P
+            </a>
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#hero" class="nav-link active" data-sec="hero">HOME</a>
+                <a href="#about" class="nav-link" data-sec="about">ABOUT</a>
+                <a href="#skills" class="nav-link" data-sec="skills">SKILLS</a>
+                <a href="#experience" class="nav-link" data-sec="experience">EXPERIENCE</a>
+                <a href="#projects" class="nav-link" data-sec="projects">PROJECTS</a>
+                <a href="#plans" class="nav-link" data-sec="plans">PLANS</a>
+                <a href="#knowledge" class="nav-link" data-sec="knowledge">KNOWLEDGE</a>
+                <a href="#personality" class="nav-link" data-sec="personality">HOBBIES</a>
+                <a href="#contact" class="nav-link" data-sec="contact">CONTACT</a>
+            </nav>
+            <a href="#contact" class="btn-connect" id="nav-connect-btn">LET'S CONNECT</a>
+        </div>
+    </header>
+
+    <!-- Social Sidebar -->
+    <div class="social-sidebar" id="social-sidebar">
+        <div class="sidebar-line"></div>
+        <a href="https://github.com/amuthanilavanp-amu" target="_blank" class="social-icon-wrapper" aria-label="GitHub" id="social-github">
+            <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/amuthanilavan-p-113285309" target="_blank" class="social-icon-wrapper" aria-label="LinkedIn" id="social-linkedin">
+            <svg class="social-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/d._nightmare?igsh=ZWV3bjlzMXFqbzBj" target="_blank" class="social-icon-wrapper" aria-label="Instagram" id="social-instagram">
+            <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/channel/UClf8qEXlL178mhdZjjmQxmA" target="_blank" class="social-icon-wrapper" aria-label="YouTube" id="social-youtube">
+            <svg class="social-icon" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.508 9.388.508 9.388.508s7.518 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="currentColor"/></svg>
+        </a>
+        <a href="mailto:amuthanilavanp@gmail.com" class="social-icon-wrapper" aria-label="Email" id="social-email">
+            <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.725v14.438h24v-14.438l-12 9.725z"/></svg>
+        </a>
+        <a href="https://wa.me/916369729536" target="_blank" class="social-icon-wrapper" aria-label="WhatsApp" id="social-whatsapp">
+            <svg class="social-icon" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.248 5.303 0 11.748 0c3.122.001 6.059 1.219 8.274 3.435 2.215 2.216 3.431 5.159 3.432 8.28 0 6.497-5.244 11.747-11.689 11.747-1.993-.001-3.955-.512-5.707-1.492L0 24zm6.07-4.148c1.562.927 3.31 1.417 5.093 1.42h.005c5.381 0 9.759-4.381 9.763-9.766 0-2.607-1.015-5.059-2.858-6.904C16.28 2.756 13.824 1.74 11.219 1.74c-5.385 0-9.764 4.382-9.768 9.768-.002 1.848.484 3.655 1.41 5.228l-.994 3.633 3.722-.976zm11.517-5.595c-.317-.159-1.88-.928-2.171-1.033-.292-.105-.505-.159-.718.159-.213.318-.823 1.033-1.009 1.245-.187.213-.374.239-.691.079-.317-.159-1.341-.494-2.553-1.575-.943-.842-1.579-1.883-1.765-2.2-.186-.318-.02-.489.139-.648.143-.143.318-.372.477-.558.159-.186.213-.318.318-.53.106-.213.053-.398-.027-.558-.079-.16-1.033-2.493-1.417-3.418-.373-.902-.752-.78-1.033-.794-.266-.013-.57-.015-.875-.015-.306 0-.803.115-1.224.575-.421.46-1.606 1.57-1.606 3.829 0 2.259 1.642 4.437 1.87 4.745.228.307 3.23 4.932 7.824 6.918 1.092.473 1.946.755 2.611.966 1.098.349 2.098.299 2.887.181.878-.13 1.88-.767 2.146-1.472.266-.705.266-1.309.187-1.437-.079-.127-.292-.207-.609-.367z"/></svg>
+        </a>
+        <div class="sidebar-line"></div>
+    </div>
+
+    <main class="content-wrapper">
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-container">
+                <div class="hero-text-content">
+                    <p class="hero-hello" id="hero-subtitle">HELLO, I AM</p>
+                    <h1 class="hero-name" id="hero-main-title">AMUTHANILAVAN. P</h1>
+                    <h2 class="hero-profession" id="hero-role-title">B.Tech Artificial Intelligence & Data Science</h2>
+                    
+                    <div class="hero-tags" id="hero-tag-container">
+                        <span class="tech-tag glow-cyan">FUTURE THINKER</span>
+                        <span class="tech-tag glow-purple">AI EXPLORER</span>
+                        <span class="tech-tag glow-blue">STORY CREATOR</span>
+                        <span class="tech-tag glow-pink">SYSTEM BUILDER</span>
+                    </div>
+
+                    <p class="hero-description" id="hero-desc-para">
+                        Curious mind. Future focused thinker.<br>
+                        I build ideas, explore new things and<br>
+                        create systems for the future.
+                    </p>
+
+                    <div class="hero-actions" id="hero-action-buttons">
+                        <a href="#projects" class="btn-primary" id="btn-explore">EXPLORE MY WORLD</a>
+                        <a href="#" class="btn-secondary" id="btn-download-cv">
+                            DOWNLOAD CV
+                            <svg class="btn-icon" viewBox="0 0 24 24"><path d="M12 21l-8-9h6v-12h4v12h6l-8 9zm-8 2h16v-2h-16v2z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Avatar Panel -->
+                <div class="hero-image-wrapper">
+                    <!-- Flapping Bird 1 (Cyan) -->
+                    <div class="floating-bird bird-1 glow-cyan">
+                        <svg class="bird-svg" viewBox="0 0 100 100">
+                            <path class="bird-left-wing" d="M 50,50 C 30,20 10,35 5,55 C 15,50 35,48 50,50 Z" fill="currentColor" />
+                            <path class="bird-right-wing" d="M 50,50 C 70,20 90,35 95,55 C 85,50 65,48 50,50 Z" fill="currentColor" />
+                            <path class="bird-body" d="M 50,45 C 48,50 48,70 50,85 C 52,70 52,50 50,45 Z M 50,45 C 50,40 48,35 50,30 C 52,35 50,40 50,45 Z" fill="currentColor" />
+                        </svg>
+                    </div>
+                    <!-- Flapping Bird 2 (Purple) -->
+                    <div class="floating-bird bird-2 glow-purple">
+                        <svg class="bird-svg" viewBox="0 0 100 100">
+                            <path class="bird-left-wing" d="M 50,50 C 30,20 10,35 5,55 C 15,50 35,48 50,50 Z" fill="currentColor" />
+                            <path class="bird-right-wing" d="M 50,50 C 70,20 90,35 95,55 C 85,50 65,48 50,50 Z" fill="currentColor" />
+                            <path class="bird-body" d="M 50,45 C 48,50 48,70 50,85 C 52,70 52,50 50,45 Z M 50,45 C 50,40 48,35 50,30 C 52,35 50,40 50,45 Z" fill="currentColor" />
+                        </svg>
+                    </div>
+                    <!-- Flapping Bird 3 (Pink) -->
+                    <div class="floating-bird bird-3 glow-pink">
+                        <svg class="bird-svg" viewBox="0 0 100 100">
+                            <path class="bird-left-wing" d="M 50,50 C 30,20 10,35 5,55 C 15,50 35,48 50,50 Z" fill="currentColor" />
+                            <path class="bird-right-wing" d="M 50,50 C 70,20 90,35 95,55 C 85,50 65,48 50,50 Z" fill="currentColor" />
+                            <path class="bird-body" d="M 50,45 C 48,50 48,70 50,85 C 52,70 52,50 50,45 Z M 50,45 C 50,40 48,35 50,30 C 52,35 50,40 50,45 Z" fill="currentColor" />
+                        </svg>
+                    </div>
+                    <div class="cyber-shield-frame animate-float">
+                        <div class="frame-border-outer"></div>
+                        <div class="frame-border-inner"></div>
+                        <!-- Cyber nodes -->
+                        <div class="frame-node node-tl"></div>
+                        <div class="frame-node node-tr"></div>
+                        <div class="frame-node node-bl"></div>
+                        <div class="frame-node node-br"></div>
+                        <div class="avatar-container">
+                            <img src="./avatar.png" alt="Amuthanilavan. P Portrait" class="avatar-img" id="hero-avatar-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-down-container" id="scroll-down-btn">
+                <span class="scroll-down-text">SCROLL DOWN</span>
+                <div class="scroll-down-arrow">
+                    <svg class="arrow-svg" viewBox="0 0 24 24"><path d="M12 21l-12-18h24z"/></svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section class="about-section scroll-reveal" id="about">
+            <div class="section-title-wrapper">
+                <div class="section-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+                <h2 class="section-title">ABOUT ME</h2>
+            </div>
+
+            <div class="about-container">
+                <div class="about-visual-column">
+                    <div class="hex-avatar-outer animate-float-delayed">
+                        <div class="hex-avatar-inner">
+                            <img src="./avatar.png" alt="Amuthanilavan Mini Portrait" class="hex-avatar-img">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-text-column">
+                    <p class="about-intro-text" id="about-intro-para">
+                        A curious mind with a vision to build the future. I love turning ideas into real world solutions through technology and creativity.
+                    </p>
+                    
+                    <div class="about-cards-grid" id="about-cards-container">
+                        <!-- Education Card -->
+                        <div class="about-card glow-blue" id="card-education">
+                            <div class="card-glow"></div>
+                            <div class="about-card-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5.49 12.03L12 15.58l6.51-3.55c.44-.24.49-.86.07-1.12L12 7.42 5.42 10.9c-.42.27-.37.89.07 1.13z"/></svg>
+                            </div>
+                            <h3 class="about-card-title">Education</h3>
+                            <h4 class="about-card-subtitle">B.Tech</h4>
+                            <p class="about-card-desc">Artificial Intelligence<br>& Data Science</p>
+                        </div>
+                        
+                        <!-- Strength Card -->
+                        <div class="about-card glow-purple" id="card-strength">
+                            <div class="card-glow"></div>
+                            <div class="about-card-icon">
+                                <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.54 4.92.42-3.73 3.23L16.23 18z"/></svg>
+                            </div>
+                            <h3 class="about-card-title">Strength</h3>
+                            <p class="about-card-desc italic-quote">"Whenever I get curious, I do it."</p>
+                        </div>
+                        
+                        <!-- Perspective Card -->
+                        <div class="about-card glow-cyan" id="card-perspective">
+                            <div class="card-glow"></div>
+                            <div class="about-card-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.47 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                            </div>
+                            <h3 class="about-card-title">Perspective</h3>
+                            <p class="about-card-desc">The future will be system-driven. Humans command. AI executes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Perspective Section (Quote & Saturn Planet) -->
+        <section class="perspective-section scroll-reveal" id="perspective">
+            <div class="saturn-planet-wrapper">
+                <!-- Glowing Bird orbiting Saturn -->
+                <div class="floating-bird bird-saturn-1 glow-cyan">
+                    <svg class="bird-svg" viewBox="0 0 100 100">
+                        <path class="bird-left-wing" d="M 50,50 C 30,20 10,35 5,55 C 15,50 35,48 50,50 Z" fill="currentColor" />
+                        <path class="bird-right-wing" d="M 50,50 C 70,20 90,35 95,55 C 85,50 65,48 50,50 Z" fill="currentColor" />
+                        <path class="bird-body" d="M 50,45 C 48,50 48,70 50,85 C 52,70 52,50 50,45 Z M 50,45 C 50,40 48,35 50,30 C 52,35 50,40 50,45 Z" fill="currentColor" />
+                    </svg>
+                </div>
+                <!-- Glowing Bird 2 orbiting Saturn -->
+                <div class="floating-bird bird-saturn-2 glow-purple">
+                    <svg class="bird-svg" viewBox="0 0 100 100">
+                        <path class="bird-left-wing" d="M 50,50 C 30,20 10,35 5,55 C 15,50 35,48 50,50 Z" fill="currentColor" />
+                        <path class="bird-right-wing" d="M 50,50 C 70,20 90,35 95,55 C 85,50 65,48 50,50 Z" fill="currentColor" />
+                        <path class="bird-body" d="M 50,45 C 48,50 48,70 50,85 C 52,70 52,50 50,45 Z M 50,45 C 50,40 48,35 50,30 C 52,35 50,40 50,45 Z" fill="currentColor" />
+                    </svg>
+                </div>
+                <div class="saturn-planet animate-float">
+                    <div class="saturn-core"></div>
+                    <div class="saturn-ring-back"></div>
+                    <div class="saturn-ring-front"></div>
+                </div>
+            </div>
+
+            <div class="perspective-quote-card" id="perspective-quote-container">
+                <div class="perspective-header">MY FUTURE PERSPECTIVE</div>
+                <blockquote class="perspective-quote">
+                    "The future will be system-driven.<br>
+                    Humans command.<br>
+                    AI will execute.<br>
+                    <span class="pulse-pink">Innovation will never stop.</span>"
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills-section scroll-reveal" id="skills">
+            <div class="section-title-wrapper">
+                <div class="section-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+                </div>
+                <div class="section-title-text">
+                    <h2 class="section-title">SKILLS ANALYSIS</h2>
+                    <p class="section-subtitle">AI POWERED SKILL INTELLIGENCE</p>
+                </div>
+            </div>
+
+            <div class="skills-container">
+                <!-- Circular Skills Grid -->
+                <div class="skills-grid" id="skills-radial-grid">
+                    <!-- Machine Learning Skill -->
+                    <div class="radial-skill-card glow-pink" data-percent="95">
+                        <div class="svg-container">
+                            <svg class="radial-svg" viewBox="0 0 100 100">
+                                <circle class="radial-bg" cx="50" cy="50" r="42"></circle>
+                                <circle class="radial-bar" cx="50" cy="50" r="42" stroke-dasharray="263.8" stroke-dashoffset="263.8"></circle>
+                            </svg>
+                            <span class="radial-percentage">95%</span>
+                        </div>
+                        <h4 class="radial-label">MACHINE LEARNING</h4>
+                    </div>
+
+                    <!-- Deep Learning Skill -->
+                    <div class="radial-skill-card glow-purple" data-percent="90">
+                        <div class="svg-container">
+                            <svg class="radial-svg" viewBox="0 0 100 100">
+                                <circle class="radial-bg" cx="50" cy="50" r="42"></circle>
+                                <circle class="radial-bar" cx="50" cy="50" r="42" stroke-dasharray="263.8" stroke-dashoffset="263.8"></circle>
+                            </svg>
+                            <span class="radial-percentage">90%</span>
+                        </div>
+                        <h4 class="radial-label">DEEP LEARNING</h4>
+                    </div>
+
+                    <!-- NLP Skill -->
+                    <div class="radial-skill-card glow-blue" data-percent="85">
+                        <div class="svg-container">
+                            <svg class="radial-svg" viewBox="0 0 100 100">
+                                <circle class="radial-bg" cx="50" cy="50" r="42"></circle>
+                                <circle class="radial-bar" cx="50" cy="50" r="42" stroke-dasharray="263.8" stroke-dashoffset="263.8"></circle>
+                            </svg>
+                            <span class="radial-percentage">85%</span>
+                        </div>
+                        <h4 class="radial-label">NLP & TEXT MINING</h4>
+                    </div>
+
+                    <!-- Time-Series Forecasting Skill -->
+                    <div class="radial-skill-card glow-cyan" data-percent="95">
+                        <div class="svg-container">
+                            <svg class="radial-svg" viewBox="0 0 100 100">
+                                <circle class="radial-bg" cx="50" cy="50" r="42"></circle>
+                                <circle class="radial-bar" cx="50" cy="50" r="42" stroke-dasharray="263.8" stroke-dashoffset="263.8"></circle>
+                            </svg>
+                            <span class="radial-percentage">95%</span>
+                        </div>
+                        <h4 class="radial-label">TIME-SERIES FORECAST</h4>
+                    </div>
+
+                    <!-- Power BI / Analytics Skill -->
+                    <div class="radial-skill-card glow-blue" data-percent="90">
+                        <div class="svg-container">
+                            <svg class="radial-svg" viewBox="0 0 100 100">
+                                <circle class="radial-bg" cx="50" cy="50" r="42"></circle>
+                                <circle class="radial-bar" cx="50" cy="50" r="42" stroke-dasharray="263.8" stroke-dashoffset="263.8"></circle>
+                            </svg>
+                            <span class="radial-percentage">90%</span>
+                        </div>
+                        <h4 class="radial-label">POWER BI & BI TOOLS</h4>
+                    </div>
+
+                    <!-- Statistics / EDA Skill -->
+                    <div class="radial-skill-card glow-pink" data-percent="95">
+                        <div class="svg-container">
+                            <svg class="radial-svg" viewBox="0 0 100 100">
+                                <circle class="radial-bg" cx="50" cy="50" r="42"></circle>
+                                <circle class="radial-bar" cx="50" cy="50" r="42" stroke-dasharray="263.8" stroke-dashoffset="263.8"></circle>
+                            </svg>
+                            <span class="radial-percentage">95%</span>
+                        </div>
+                        <h4 class="radial-label">STATISTICS & EDA</h4>
+                    </div>
+                </div>
+
+                <!-- Radar/Spider Chart Panel -->
+                <div class="radar-chart-container" id="radar-chart-card">
+                    <svg id="radar-svg" class="radar-svg-elem" viewBox="0 0 400 400">
+                        <!-- Radar grid lines and data polygons are generated dynamically via JS for precision, fallback elements included below -->
+                        <g class="radar-grid-grp"></g>
+                        <g class="radar-labels-grp"></g>
+                        <polygon class="radar-poly-glow" points=""></polygon>
+                        <polygon class="radar-poly" points=""></polygon>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects-section scroll-reveal" id="projects">
+            <div class="section-title-wrapper">
+                <div class="section-icon">
+                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                </div>
+                <div class="section-title-text">
+                    <h2 class="section-title">PROJECTS</h2>
+                    <p class="section-subtitle">THINGS I BUILD</p>
+                </div>
+            </div>
+
+            <div class="projects-container">
+                <div class="projects-grid" id="projects-list-grid">
+                    <!-- Project 1: Store Demand Forecasting -->
+                    <div class="project-card glow-cyan" id="proj-forecast-card" data-proj="forecast">
+                        <div class="project-img-display mesh-bg-ai">
+                            <div class="digital-brain-wave"></div>
+                            <svg class="project-card-svg-icon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M3 3v18h18M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title" id="title-proj-forecast">Store Demand Forecasting</h3>
+                            <p class="project-desc">Time-series models with statistical preprocessing and EDA for retail demand prediction.</p>
+                            <span class="btn-proj-spec glow-cyan-text" id="spec-proj-forecast">VIEW ANALYSIS LOGS &gt;</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: AI-Generated Content Detector -->
+                    <div class="project-card glow-purple" id="proj-detector-card" data-proj="detector">
+                        <div class="project-img-display mesh-bg-web">
+                            <div class="digital-globe-wave"></div>
+                            <svg class="project-card-svg-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2" stroke="currentColor" fill="none" stroke-width="1.8"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="1.8"/></svg>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title" id="title-proj-detector">AI-Generated Content Detector</h3>
+                            <p class="project-desc">ML classification tool with NLP tokenization and text preprocessing.</p>
+                            <span class="btn-proj-spec glow-purple-text" id="spec-proj-detector">VIEW ANALYSIS LOGS &gt;</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Lucy Deep Search Algorithm -->
+                    <div class="project-card glow-blue" id="proj-lucy-card" data-proj="lucy">
+                        <div class="project-img-display mesh-bg-concepts">
+                            <div class="digital-orbit-wave"></div>
+                            <svg class="project-card-svg-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke="currentColor" fill="none" stroke-width="1.8"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title" id="title-proj-lucy">Lucy Deep Search Algorithm</h3>
+                            <p class="project-desc">Pattern recognition system optimizing search throughput and data indexing.</p>
+                            <span class="btn-proj-spec glow-blue-text" id="spec-proj-lucy">VIEW ANALYSIS LOGS &gt;</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Movie Prediction Analytics -->
+                    <div class="project-card glow-pink" id="proj-movie-card" data-proj="movie">
+                        <div class="project-img-display mesh-bg-experiments">
+                            <div class="digital-circuit-wave"></div>
+                            <svg class="project-card-svg-icon" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" fill="none" stroke-width="1.8"/><path d="M12 8v8l6-4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title" id="title-proj-movie">Movie Prediction Analytics</h3>
+                            <p class="project-desc">Regression models forecasting box office trends with clean visualizations.</p>
+                            <span class="btn-proj-spec glow-pink-text" id="spec-proj-movie">VIEW ANALYSIS LOGS &gt;</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rocket/View All Column -->
+                <div class="all-projects-panel" id="all-projects-card">
+                    <div class="city-rocket-bg">
+                        <!-- Futuristic city silhouettes + animated SVG rocket -->
+                        <div class="city-sky">
+                            <div class="glowing-stars"></div>
+                            <div class="animated-rocket-wrapper">
+                                <svg class="svg-rocket" viewBox="0 0 24 24">
+                                    <path fill="#00e5ff" d="M12 2s-5 6-5 12h10c0-6-5-12-5-12zm-3 14c0 1.66 1.34 3 3 3s3-1.34 3-3H9zm3 6c-1.1 0-2-.9-2-2h4c0 1.1-.9 2-2 2z"/>
+                                </svg>
+                                <div class="rocket-fire"></div>
+                            </div>
+                        </div>
+                        <div class="city-silhouette"></div>
+                        <div class="human-silhouette"></div>
+                    </div>
+                    <div class="all-projects-content">
+                        <a href="#projects" class="btn-view-all" id="btn-view-all-projects">VIEW ALL PROJECTS</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Experience & Internships Section -->
+        <section class="experience-section scroll-reveal" id="experience">
+            <div class="section-title-wrapper">
+                <div class="section-icon">
+                    <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" stroke="currentColor" fill="none" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="section-title-text">
+                    <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
+                    <p class="section-subtitle">INTERNSHIPS & WORK RECORDS</p>
+                </div>
+            </div>
+
+            <div class="experience-container">
+                <div class="experience-cards-grid" id="experience-list-grid">
+                    <!-- Internship 1: Besant Technologies -->
+                    <div class="experience-card glow-cyan" data-exp="besant">
+                        <div class="exp-badge">JAN 2025 – APR 2026</div>
+                        <div class="experience-content">
+                            <h3 class="experience-title" id="title-exp-besant">Data Science & AI Intern</h3>
+                            <h4 class="experience-company">Besant Technologies, Bangalore</h4>
+                            <p class="experience-short-desc">Engineered predictive models and dynamic Power BI dashboards translating complex metrics into insights.</p>
+                            <span class="btn-proj-spec glow-cyan-text" id="btn-exp-besant-logs">ACCESS SYSTEM RECORD &gt;</span>
+                        </div>
+                    </div>
+
+                    <!-- Internship 2: Intern Certify -->
+                    <div class="experience-card glow-purple" data-exp="certify">
+                        <div class="exp-badge">AUG 2024 – PRESENT</div>
+                        <div class="experience-content">
+                            <h3 class="experience-title" id="title-exp-certify">Deep Learning Intern</h3>
+                            <h4 class="experience-company">Intern Certify</h4>
+                            <p class="experience-short-desc">Designed neural networks with optimized loss functions, hyperparameter tuning, and vision pipelines.</p>
+                            <span class="btn-proj-spec glow-purple-text" id="btn-exp-certify-logs">ACCESS SYSTEM RECORD &gt;</span>
+                        </div>
+                    </div>
+
+                    <!-- Internship 3: Infogro Technology -->
+                    <div class="experience-card glow-blue" data-exp="infogro">
+                        <div class="exp-badge">AUG 2024 – SEP 2024</div>
+                        <div class="experience-content">
+                            <h3 class="experience-title" id="title-exp-infogro">Automation Testing Intern</h3>
+                            <h4 class="experience-company">Infogro Technology</h4>
+                            <p class="experience-short-desc">Developed automated test scripts using Selenium and analyzed verification metrics in agile frameworks.</p>
+                            <span class="btn-proj-spec glow-blue-text" id="btn-exp-infogro-logs">ACCESS SYSTEM RECORD &gt;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Plans Timeline Section -->
+        <section class="plans-section scroll-reveal" id="plans">
+            <div class="section-title-wrapper">
+                <div class="section-icon">
+                    <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
+                </div>
+                <div class="section-title-text">
+                    <h2 class="section-title">FUTURE PLANS</h2>
+                    <p class="section-subtitle">WHAT I WANT TO BUILD</p>
+                </div>
+            </div>
+
+            <div class="plans-container">
+                <!-- Horizontal Timeline -->
+                <div class="timeline-wrapper" id="plans-timeline">
+                    <div class="timeline-track"></div>
+                    <div class="timeline-nodes">
+                        <!-- Node 1: 2026 -->
+                        <div class="timeline-node glow-blue active" id="node-2026">
+                            <div class="node-marker">2026</div>
+                            <div class="node-content">
+                                <h3 class="node-title">LEARN & GROW</h3>
+                                <p class="node-desc">Master technologies & build strong foundation.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Node 2: 2027 -->
+                        <div class="timeline-node glow-purple" id="node-2027">
+                            <div class="node-marker">2027</div>
+                            <div class="node-content">
+                                <h3 class="node-title">BUILD SYSTEMS</h3>
+                                <p class="node-desc">Create real world AI based solutions.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Node 3: 2030 -->
+                        <div class="timeline-node glow-cyan" id="node-2030">
+                            <div class="node-marker">2030</div>
+                            <div class="node-content">
+                                <h3 class="node-title">CREATE IMPACT</h3>
+                                <p class="node-desc">Build companies that improve humanity.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Node 4: Future -->
+                        <div class="timeline-node glow-pink" id="node-future">
+                            <div class="node-marker">FUTURE</div>
+                            <div class="node-content">
+                                <h3 class="node-title">CHANGE THE WORLD</h3>
+                                <p class="node-desc">Make the world smarter, better & peaceful.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Explore More Side Column -->
+                <div class="plans-explore-panel" id="plans-explore-card">
+                    <div class="explore-portal-bg">
+                        <div class="glowing-portal">
+                            <div class="portal-core"></div>
+                            <div class="portal-ring ring1"></div>
+                            <div class="portal-ring ring2"></div>
+                        </div>
+                        <div class="traveler-silhouette"></div>
+                    </div>
+                    <div class="plans-explore-content">
+                        <p class="explore-quote">"My mind is always curious about the universe, technology, history and new things."</p>
+                        <a href="#about" class="btn-explore-more" id="btn-explore-plans">EXPLORE MORE</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Knowledge & Interests Section -->
+        <section class="knowledge-section scroll-reveal" id="knowledge">
+            <div class="section-title-wrapper">
+                <div class="section-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l4-2.18L12 3zm6.8 9.07L12 15.8 5.2 12.07l-2.02-.9c-.19-.08-.19-.36 0-.44l8.36-4.56c.3-.16.68-.16.98 0l8.36 4.56c.19.08.19.36 0 .44l-2.08.97zM17 14.25v2.85l-5 2.73-5-2.73v-2.85l5 2.73 5-2.73z"/></svg>
+                </div>
+                <div class="section-title-text">
+                    <h2 class="section-title">KNOWLEDGE & INTERESTS</h2>
+                    <p class="section-subtitle">WHAT FASCINATES MY MIND</p>
+                </div>
+            </div>
+
+            <div class="knowledge-container">
+                <!-- Interest Bubbles Panel -->
+                <div class="interest-bubbles-grid" id="interests-grid">
+                    <!-- Bubble 1: Physics -->
+                    <div class="interest-bubble-wrapper glow-blue" id="int-physics">
+                        <div class="interest-bubble">
+                            <svg class="interest-svg" viewBox="0 0 24 24">
+                                <ellipse cx="12" cy="12" rx="10" ry="4" stroke="currentColor" fill="none" stroke-width="1.5" transform="rotate(30, 12, 12)" />
+                                <ellipse cx="12" cy="12" rx="10" ry="4" stroke="currentColor" fill="none" stroke-width="1.5" transform="rotate(90, 12, 12)" />
+                                <ellipse cx="12" cy="12" rx="10" ry="4" stroke="currentColor" fill="none" stroke-width="1.5" transform="rotate(150, 12, 12)" />
+                                <circle cx="12" cy="12" r="2" fill="currentColor" />
+                            </svg>
+                        </div>
+                        <span class="interest-bubble-label">PHYSICS</span>
+                    </div>
+
+                    <!-- Bubble 2: Quantum Theories -->
+                    <div class="interest-bubble-wrapper glow-purple" id="int-quantum">
+                        <div class="interest-bubble">
+                            <svg class="interest-svg" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" fill="none" stroke-width="1" stroke-dasharray="2 2" />
+                                <circle cx="12" cy="12" r="6" stroke="currentColor" fill="none" stroke-width="1.5" />
+                                <circle cx="6" cy="12" r="1.5" fill="currentColor" />
+                                <circle cx="18" cy="12" r="1.5" fill="currentColor" />
+                                <circle cx="12" cy="6" r="1.5" fill="currentColor" />
+                                <circle cx="12" cy="18" r="1.5" fill="currentColor" />
+                            </svg>
+                        </div>
+                        <span class="interest-bubble-label">QUANTUM THEORIES</span>
+                    </div>
+
+                    <!-- Bubble 3: AI & Systems -->
+                    <div class="interest-bubble-wrapper glow-cyan" id="int-ai">
+                        <div class="interest-bubble">
+                            <svg class="interest-svg" viewBox="0 0 24 24">
+                                <path fill="none" stroke="currentColor" stroke-width="1.5" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                                <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                            </svg>
+                        </div>
+                        <span class="interest-bubble-label">AI & SYSTEMS</span>
+                    </div>
+
+                    <!-- Bubble 4: Tamil History -->
+                    <div class="interest-bubble-wrapper glow-pink" id="int-history">
+                        <div class="interest-bubble">
+                            <!-- Custom sharp temple tower shape representing Tamil heritage -->
+                            <svg class="interest-svg" viewBox="0 0 24 24">
+                                <path fill="none" stroke="currentColor" stroke-width="1.5" d="M12 2l-7 5h14l-7-5z M6 7v13h12V7M9 20v-5h6v5 M9 10h6 M8 13h8" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="interest-bubble-label">TAMIL HISTORY</span>
+                    </div>
+
+                    <!-- Bubble 5: Technology -->
+                    <div class="interest-bubble-wrapper glow-blue" id="int-tech">
+                        <div class="interest-bubble">
+                            <svg class="interest-svg" viewBox="0 0 24 24">
+                                <rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" fill="none" stroke-width="1.5" />
+                                <rect x="6" y="6" width="12" height="12" rx="1" fill="none" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M12 2v4 M12 18v4 M2 12h4 M18 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <span class="interest-bubble-label">TECHNOLOGY</span>
+                    </div>
+                </div>
+
+                <!-- Compass Panel -->
+                <div class="compass-panel" id="compass-card">
+                    <div class="compass-visual-bg">
+                        <div class="vintage-compass animate-rotate-slow">
+                            <div class="compass-outer"></div>
+                            <div class="compass-dial"></div>
+                            <div class="compass-needle"></div>
+                        </div>
+                    </div>
+                    <div class="compass-text-content">
+                        <p class="compass-quote">"I love to explore new places, meet new people, see new things and create memories that last forever."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personality Section -->
+        <section class="personality-section scroll-reveal" id="personality">
+            <div class="section-title-wrapper">
+                <div class="section-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm0-4h-2V7h2v8z"/></svg>
+                </div>
+                <div class="section-title-text">
+                    <h2 class="section-title">PERSONALITY</h2>
+                    <p class="section-subtitle">THE CURIOSITY LEARNER</p>
+                </div>
+            </div>
+
+            <div class="personality-container">
+                <div class="personality-visual-column">
+                    <div class="avatar-shield-wing animate-float">
+                        <div class="shield-outer"></div>
+                        <div class="shield-inner"></div>
+                        <div class="personality-avatar-wrapper">
+                            <img src="./avatar.png" alt="Amuthanilavan Personality Portrait" class="personality-avatar-img">
+                        </div>
+                        <div class="neon-birds">
+                            <!-- Flapping Bird 1 (Cyan) -->
+                            <div class="floating-bird bird-personality-1 glow-cyan">
+                                <svg class="bird-svg" viewBox="0 0 100 100">
+                                    <path class="bird-left-wing" d="M 50,50 C 30,20 10,35 5,55 C 15,50 35,48 50,50 Z" fill="currentColor" />
+                                    <path class="bird-right-wing" d="M 50,50 C 70,20 90,35 95,55 C 85,50 65,48 50,50 Z" fill="currentColor" />
+                                    <path class="bird-body" d="M 50,45 C 48,50 48,70 50,85 C 52,70 52,50 50,45 Z M 50,45 C 50,40 48,35 50,30 C 52,35 50,40 50,45 Z" fill="currentColor" />
+                                </svg>
+                            </div>
+                            <!-- Flapping Bird 2 (Purple) -->
+                            <div class="floating-bird bird-personality-2 glow-purple">
+                                <svg class="bird-svg" viewBox="0 0 100 100">
+                                    <path class="bird-left-wing" d="M 50,50 C 30,20 10,35 5,55 C 15,50 35,48 50,50 Z" fill="currentColor" />
+                                    <path class="bird-right-wing" d="M 50,50 C 70,20 90,35 95,55 C 85,50 65,48 50,50 Z" fill="currentColor" />
+                                    <path class="bird-body" d="M 50,45 C 48,50 48,70 50,85 C 52,70 52,50 50,45 Z M 50,45 C 50,40 48,35 50,30 C 52,35 50,40 50,45 Z" fill="currentColor" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="personality-text-column">
+                    <p class="personality-statement">"I love discovering new things and creating new things."</p>
+                    
+                    <div class="personality-pills">
+                        <span class="personality-pill glow-cyan">CURIOUS</span>
+                        <span class="personality-pill glow-purple">FOCUSED</span>
+                        <span class="personality-pill glow-blue">CREATIVE</span>
+                        <span class="personality-pill glow-pink">DISCIPLINED</span>
+                        <span class="personality-pill glow-cyan">DREAMER</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section scroll-reveal" id="contact">
+            <div class="section-title-wrapper">
+                <div class="section-icon">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </div>
+                <div class="section-title-text">
+                    <h2 class="section-title">CONTACT ME</h2>
+                    <p class="section-subtitle">LET'S CONNECT</p>
+                </div>
+            </div>
+
+            <div class="contact-container">
+                <!-- Contact info panel -->
+                <div class="contact-info-panel" id="contact-info-card">
+                    <div class="contact-methods">
+                        <div class="contact-method glow-blue" id="info-email">
+                            <div class="method-icon">
+                                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            </div>
+                            <div class="method-detail">
+                                <span class="method-label">EMAIL ME</span>
+                                <a href="mailto:amuthanilavanp@gmail.com" class="method-val">amuthanilavanp@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-method glow-purple" id="info-phone">
+                            <div class="method-icon">
+                                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                            </div>
+                            <div class="method-detail">
+                                <span class="method-label">CALL ME</span>
+                                <a href="tel:+916369729536" class="method-val">6369729536</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-method glow-cyan" id="info-location">
+                            <div class="method-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            </div>
+                            <div class="method-detail">
+                                <span class="method-label">MY LOCATION</span>
+                                <span class="method-val">Tamil Nadu, India</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Standing pedestal avatar -->
+                    <div class="avatar-pedestal-wrapper">
+                        <div class="hologram-beams"></div>
+                        <div class="pedestal-hologram">
+                            <div class="avatar-holder">
+                                <img src="./avatar.png" alt="Amuthanilavan Pedestal Image" class="avatar-pedestal-img">
+                            </div>
+                        </div>
+                        <div class="pedestal-base">
+                            <div class="pedestal-ring ring-outer"></div>
+                            <div class="pedestal-ring ring-inner animate-rotate-slow"></div>
+                            <div class="pedestal-light animate-pulse-glow"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sleek contact form -->
+                <div class="contact-form-panel" id="contact-form-card">
+                    <form class="cyber-form" id="cyber-contact-form" autocomplete="off">
+                        <div class="form-group glow-blue">
+                            <input type="text" id="form-name" required placeholder=" ">
+                            <label for="form-name">Your Name</label>
+                            <span class="input-glow-line"></span>
+                        </div>
+                        
+                        <div class="form-group glow-purple">
+                            <input type="email" id="form-email" required placeholder=" ">
+                            <label for="form-email">Your Email</label>
+                            <span class="input-glow-line"></span>
+                        </div>
+                        
+                        <div class="form-group glow-cyan">
+                            <textarea id="form-message" rows="5" required placeholder=" "></textarea>
+                            <label for="form-message">Your Message</label>
+                            <span class="input-glow-line"></span>
+                        </div>
+
+                        <button type="submit" class="btn-submit" id="form-submit-btn">
+                            <span>SEND MESSAGE</span>
+                            <svg class="submit-icon" viewBox="0 0 24 24">
+                                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                            </svg>
+                        </button>
+                    </form>
+                    <div class="form-success-alert" id="form-success-msg">
+                        <div class="success-icon">
+                            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        </div>
+                        <h4 class="success-title">MESSAGE TRANSMITTED</h4>
+                        <p class="success-desc">Communication received. Standing by for contact.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Area -->
+    <footer class="footer" id="footer">
+        <div class="footer-grid">
+            <!-- Left: Special Features Panel -->
+            <div class="footer-panel panel-special" id="footer-special-panel">
+                <h4 class="panel-title">SPECIAL FEATURES</h4>
+                <div class="features-list">
+                    <div class="feature-item active toggleable" id="toggle-animations">
+                        <span class="feature-indicator"></span>
+                        <span class="feature-name">SMOOTH ANIMATIONS</span>
+                        <span class="status-label">ON</span>
+                    </div>
+                    <div class="feature-item active toggleable" id="toggle-mouse">
+                        <span class="feature-indicator"></span>
+                        <span class="feature-name">MOUSE INTERACTIONS</span>
+                        <span class="status-label">ON</span>
+                    </div>
+                    <div class="feature-item active toggleable" id="toggle-glass">
+                        <span class="feature-indicator"></span>
+                        <span class="feature-name">GLASS MORPHISM</span>
+                        <span class="status-label">ON</span>
+                    </div>
+                    <div class="feature-item active toggleable" id="toggle-ui">
+                        <span class="feature-indicator"></span>
+                        <span class="feature-name">DARK FUTURISTIC UI</span>
+                        <span class="status-label">ON</span>
+                    </div>
+                    <!-- Audio sound feature toggle -->
+                    <div class="feature-item active toggleable" id="sound-toggle-btn">
+                        <span class="feature-indicator sound-state"></span>
+                        <span class="feature-name">SOUND EFFECTS</span>
+                        <span class="sound-status-label">ON</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle: Website Flow Panel -->
+            <div class="footer-panel panel-flow" id="footer-flow-panel">
+                <h4 class="panel-title">WEBSITE FLOW</h4>
+                <div class="flow-chart">
+                    <a href="#hero" class="flow-step" title="Home">
+                        <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                        <span class="flow-label">HOME</span>
+                    </a>
+                    <div class="flow-arrow">&gt;</div>
+                    <a href="#about" class="flow-step" title="About">
+                        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        <span class="flow-label">ABOUT</span>
+                    </a>
+                    <div class="flow-arrow">&gt;</div>
+                    <a href="#skills" class="flow-step" title="Skills">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm0-4h-2V7h2v8z"/></svg>
+                        <span class="flow-label">SKILLS</span>
+                    </a>
+                    <div class="flow-arrow">&gt;</div>
+                    <a href="#projects" class="flow-step" title="Projects">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                        <span class="flow-label">PROJ</span>
+                    </a>
+                    <div class="flow-arrow">&gt;</div>
+                    <a href="#plans" class="flow-step" title="Plans">
+                        <svg viewBox="0 0 24 24"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+                        <span class="flow-label">PLANS</span>
+                    </a>
+                    <div class="flow-arrow">&gt;</div>
+                    <a href="#knowledge" class="flow-step" title="Knowledge">
+                        <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l4-2.18L12 3zm6.8 9.07L12 15.8 5.2 12.07l-2.02-.9c-.19-.08-.19-.36 0-.44l8.36-4.56c.3-.16.68-.16.98 0l8.36 4.56c.19.08.19.36 0 .44l-2.08.97z"/></svg>
+                        <span class="flow-label">KNOW</span>
+                    </a>
+                    <div class="flow-arrow">&gt;</div>
+                    <a href="#personality" class="flow-step" title="Personality">
+                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        <span class="flow-label">HOBB</span>
+                    </a>
+                    <div class="flow-arrow">&gt;</div>
+                    <a href="#contact" class="flow-step" title="Contact">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <span class="flow-label">CONT</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right: Thank You Panel -->
+            <div class="footer-panel panel-thanks" id="footer-thanks-panel">
+                <h4 class="panel-title">THANK YOU!</h4>
+                <p class="thanks-statement">Thanks for visiting my portfolio.<br>Let's build the future together!</p>
+                <div class="signature-container">
+                    <span class="calligraphy-signature" id="signature-text">Amuthanilavan. P</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-slogan">A JOURNEY OF IDEAS, CURIOSITY & FUTURE VISION</div>
+            <div class="footer-copyright" id="footer-copy-text">© 2026 Amuthanilavan. P | All Rights Reserved</div>
+        </div>
+    </footer>
+
+    <!-- Interactive Glowing Terminal CV Decrypt Modal -->
+    <div id="cv-terminal-modal" class="cyber-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content glass-panel glow-cyan">
+            <div class="modal-header">
+                <div class="terminal-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <div class="modal-title">SECURE CV TRANSMISSION PROTOCOL</div>
+                <button class="modal-close-btn" id="close-cv-modal">&times;</button>
+            </div>
+            <div class="modal-body terminal-body">
+                <div class="terminal-welcome">UPLINK ESTABLISHED. DECRYPTING DATA FILE...</div>
+                <div class="terminal-log-output" id="terminal-log-lines"></div>
+                <div class="terminal-interactive-line">
+                    <span class="terminal-prompt">guest@amuthanilavan:~$</span>
+                    <span id="terminal-typed-cmd"></span>
+                    <span class="terminal-cursor"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn-primary" id="btn-download-raw-cv">DOWNLOAD DECRYPTED RAW CV</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Extra Projects Catalog Modal -->
+    <div id="projects-gallery-modal" class="cyber-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content glass-panel glow-purple">
+            <div class="modal-header">
+                <div class="modal-title">ADVANCED PROJECTS CATALOG</div>
+                <button class="modal-close-btn" id="close-projects-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="projects-gallery-grid">
+                    <!-- Project card A -->
+                    <div class="gallery-proj-card glow-cyan">
+                        <div class="gallery-proj-icon">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" fill="none" stroke-width="1.5" /><path d="M7 10h10M7 14h10" stroke="currentColor" stroke-width="1.5"/></svg>
+                        </div>
+                        <h4 class="gallery-proj-title">Neural Net Sandbox</h4>
+                        <p class="gallery-proj-desc">Web-based visual neural network constructor to model, train, and test multi-layered perceptrons dynamically.</p>
+                    </div>
+                    <!-- Project card B -->
+                    <div class="gallery-proj-card glow-purple">
+                        <div class="gallery-proj-icon">
+                            <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                        </div>
+                        <h4 class="gallery-proj-title">Matrix Grid Game</h4>
+                        <p class="gallery-proj-desc">Sci-Fi pathfinding grid puzzle powered by A* algorithmic search with canvas animations.</p>
+                    </div>
+                    <!-- Project card C -->
+                    <div class="gallery-proj-card glow-blue">
+                        <div class="gallery-proj-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
+                        </div>
+                        <h4 class="gallery-proj-title">Holo UI Components</h4>
+                        <p class="gallery-proj-desc">A highly reusable CSS UI framework for glassmorphism panels, glowing buttons, and cyber-nodes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- General Interactive Details Viewer Modal -->
+    <div id="details-viewer-modal" class="cyber-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content glass-panel glow-cyan" id="details-viewer-content">
+            <div class="modal-header">
+                <div class="terminal-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <div class="modal-title" id="details-modal-header-title">SYSTEM ANALYSIS ACCESS</div>
+                <button class="modal-close-btn" id="close-details-modal">&times;</button>
+            </div>
+            <div class="modal-body terminal-body">
+                <div class="details-content-body" id="details-modal-body-content">
+                    <!-- Dynamic terminal logs populated in JS -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" id="btn-close-details-footer">DISMISS DATABASE RECORD</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
