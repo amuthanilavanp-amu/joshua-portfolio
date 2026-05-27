@@ -578,8 +578,18 @@ function initContactForm() {
         submitBtn.querySelector('span').textContent = "TRANSMITTING SIGNAL...";
         submitBtn.disabled = true;
 
-        // Simulate secure uplink network delay
-        setTimeout(() => {
+        // Send submission to Netlify Forms via AJAX POST
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams({
+                "form-name": "contact",
+                "name": name,
+                "email": email,
+                "message": msg
+            }).toString()
+        })
+        .then(() => {
             // Trigger visual success box
             form.style.opacity = '0';
             setTimeout(() => {
@@ -587,13 +597,18 @@ function initContactForm() {
                 successMsg.classList.add('show');
             }, 300);
 
-            // Optional: Store signal logs locally
+            // Store signal logs locally
             const submissions = JSON.parse(localStorage.getItem('uplink-comms') || '[]');
             submissions.push({ name, email, msg, timestamp: new Date().toISOString() });
             localStorage.setItem('uplink-comms', JSON.stringify(submissions));
             
             console.log('Signal transmitted successfully:', { name, email, msg });
-        }, 1800);
+        })
+        .catch((error) => {
+            console.error('Netlify form submission failed:', error);
+            submitBtn.querySelector('span').textContent = "TRANSMISSION ERROR";
+            submitBtn.disabled = false;
+        });
     });
 }
 
