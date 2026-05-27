@@ -1696,6 +1696,7 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: opacity 0.25s ease-in-out;
 }
 
 .avatar-shield-wing:hover .shield-outer {

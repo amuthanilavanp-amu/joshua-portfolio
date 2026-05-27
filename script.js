@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSpontaneousBirds();
     initSpecialFeatures();
     initDetailsModalViewer();
+    initPersonalityRealImageToggle();
 });
 
 /* ==========================================================================
@@ -991,7 +992,9 @@ const DETAILS_DATABASE = {
             "Engineered predictive models optimizing historical data processing for business forecasting.",
             "Built dynamic, interactive Power BI dashboards translating complex operational metrics into executive insights.",
             "Delivered high-accuracy visual graphs and statistical analytics ahead of schedule, improving stakeholder review cycles."
-        ]
+        ],
+        certFile: "certificate/Amuthanilavan P  _Internship Certificate.pdf",
+        certType: "pdf"
     },
     certify: {
         title: "Deep Learning Intern",
@@ -1000,7 +1003,9 @@ const DETAILS_DATABASE = {
             "Designed deep neural networks with optimized loss functions and rigorous hyperparameter tuning.",
             "Implemented computer vision, image segmentation, and pattern recognition solutions with clean pipelines.",
             "Conducted performance evaluations comparing backpropagation speeds, weight decay, and dropouts."
-        ]
+        ],
+        certFile: "certificate/gMTdCXwDdLYoXZ3wG_ifobHAoMjQs9s6bKS_6965acc0adc800fbf21c41f8_1776432017406_completion_certificate.pdf",
+        certType: "pdf"
     },
     infogro: {
         title: "Automation Testing Intern",
@@ -1009,6 +1014,40 @@ const DETAILS_DATABASE = {
             "Developed automated test scripts using Selenium, reducing regression testing cycle times.",
             "Analyzed verification metrics in agile frameworks to detect and report software system vulnerabilities."
         ]
+    },
+    // 3 Course Certificates
+    ibm_ds: {
+        title: "Data Science Fundamentals",
+        subtitle: "IBM Cloud Digilabs | Oct 2025",
+        bullets: [
+            "Successfully completed extensive training and evaluation in core Data Science Fundamentals.",
+            "Mastered data cleaning, visual analytics, exploratory data processing, and predictive statistical pipelines.",
+            "Certified and authentic credential issued through IBM Cloud Digilabs by Tech Head Raja Gopal and Director Shiva Kumar."
+        ],
+        certFile: "certificate/WhatsApp Image 2026-05-27 at 10.19.30 AM.jpeg",
+        certType: "image"
+    },
+    apex_readiness: {
+        title: "Advanced Professional Readiness",
+        subtitle: "Apex Seekers EdTech | 2026",
+        bullets: [
+            "Conducted at Tagore Institute of Engineering and Technology for final year AI & DS students.",
+            "Demonstrated deep alignment with advanced professional engineering systems and industry-ready standards.",
+            "Validated by Apex Seekers EdTech Pvt. Ltd. and officially affiliated by RSDC."
+        ],
+        certFile: "certificate/WhatsApp Image 2026-05-27 at 10.18.02 AM.jpeg",
+        certType: "image"
+    },
+    udacity: {
+        title: "Tech Skills Advancement Graduate",
+        subtitle: "Udacity Career Program | 2025",
+        bullets: [
+            "Intensive training program mastering state-of-the-art software systems and cloud logic workflows.",
+            "Acquired hands-on expertise building production-ready architectures and data interfaces.",
+            "Recognized by Udacity as a certified specialist equipped with advanced tech capabilities."
+        ],
+        certFile: "certificate/Learn the Latest Tech Skills; Advance Your Career _ Udacity (1).pdf",
+        certType: "pdf"
     }
 };
 
@@ -1102,7 +1141,85 @@ function initDetailsModalViewer() {
 
         htmlContent += `</ul>`;
 
+        // Embed certificate image or PDF iframe dynamically
+        if (record.certFile) {
+            htmlContent += `
+                <div class="details-cert-block" style="margin-top: 25px; border-top: 1px dashed rgba(255, 255, 255, 0.1); padding-top: 20px;">
+                    <div style="font-family: 'Orbitron', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--accent-cyan); letter-spacing: 1.5px; margin-bottom: 12px; text-transform: uppercase;">
+                        SECURE CREDENTIAL TRANSMISSION:
+                    </div>
+            `;
+            if (record.certType === "image") {
+                htmlContent += `
+                    <div class="cert-img-container" style="position: relative; display: flex; justify-content: center; align-items: center; border-radius: 8px; overflow: hidden; border: 1px solid rgba(0, 229, 255, 0.25); background: rgba(2, 2, 8, 0.4); box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);">
+                        <img src="${record.certFile}" alt="Certificate for ${record.title}" style="width: 100%; max-height: 420px; object-fit: contain; display: block; border-radius: 8px;">
+                    </div>
+                `;
+            } else if (record.certType === "pdf") {
+                htmlContent += `
+                    <div class="cert-pdf-container" style="position: relative; width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid rgba(0, 229, 255, 0.25); background: rgba(2, 2, 8, 0.4); box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);">
+                        <iframe src="${record.certFile}" width="100%" height="400px" style="border: none; display: block;"></iframe>
+                    </div>
+                    <div style="margin-top: 15px; text-align: center;">
+                        <a href="${record.certFile}" target="_blank" class="btn-primary" style="display: inline-block; font-size: 0.75rem; padding: 8px 18px; border-radius: 20px; text-decoration: none; border: 1px solid var(--accent-cyan); color: var(--accent-cyan); background: transparent; transition: all 0.3s ease;">
+                            OPEN CERTIFICATE PDF IN NEW TAB
+                        </a>
+                    </div>
+                `;
+            }
+            htmlContent += `</div>`;
+        }
+
         modalBody.innerHTML = htmlContent;
         modal.classList.add('show');
     }
 }
+
+/* ==========================================================================
+   14. PERSONALITY SECTION REAL IMAGE TOGGLER
+   ========================================================================== */
+function initPersonalityRealImageToggle() {
+    const toggleBtn = document.getElementById('btn-toggle-real');
+    const avatarImg = document.querySelector('.personality-avatar-img');
+    if (!toggleBtn || !avatarImg) return;
+
+    let showingReal = false;
+    const avatarSrc = "./avatar.png";
+    const realSrc = "certificate/WhatsApp Image 2026-05-27 at 10.20.53 AM.jpeg";
+
+    toggleBtn.addEventListener('click', () => {
+        showingReal = !showingReal;
+        
+        // Play click sound using Audio Context
+        try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gainNode = ctx.createGain();
+            osc.frequency.setValueAtTime(showingReal ? 800 : 600, ctx.currentTime);
+            gainNode.gain.setValueAtTime(0.04, ctx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.12);
+            osc.connect(gainNode);
+            gainNode.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.12);
+        } catch(e){}
+
+        // Smooth transition
+        avatarImg.style.opacity = '0';
+        setTimeout(() => {
+            if (showingReal) {
+                avatarImg.src = realSrc;
+                toggleBtn.textContent = "SHOW AVATAR IMAGE";
+                toggleBtn.style.borderColor = "var(--accent-pink)";
+                toggleBtn.style.boxShadow = "0 0 15px rgba(255, 0, 127, 0.4)";
+            } else {
+                avatarImg.src = avatarSrc;
+                toggleBtn.textContent = "SHOW REAL IMAGE";
+                toggleBtn.style.borderColor = "var(--accent-cyan)";
+                toggleBtn.style.boxShadow = "0 0 15px rgba(0, 229, 255, 0.3)";
+            }
+            avatarImg.style.opacity = '1';
+        }, 250);
+    });
+}
+
